@@ -26,8 +26,6 @@ Select the **best** answer.
 
 ## Define a Function
 
-Here’s the revised **multiple-choice questions in Markdown format** with **multiple correct answers**, suitable for testing understanding of **function header vs. function body**:
-
 ### **Which of the following are valid *function headers* in C?**
 
 Select **all that apply**.
@@ -69,8 +67,6 @@ Select the **best** answer.
 * [ ] C. Choose the return type based on the kind of value the function should return.
 * [ ] D. Use `void` for every function to simplify code.
 * [ ] E. Let the compiler decide automatically.
-
-Great idea. Here’s a set of **code-based fill-in-the-blank questions** (Markdown) where students must supply either the **return type** or the **return value**. Each question includes a short prompt and a code snippet with `_____` for the blank. An answer key is at the end.
 
 ### Fill in the **return type**
 
@@ -148,10 +144,6 @@ int is_even(int x) {
     return _____;
 }
 ```
-
-Excellent — moving on to **function calls** is a natural next step after teaching function headers, bodies, and return types.
-
-Here’s a structured breakdown of how we can cover this topic for your **Fundamentals of C Programming** class, followed by sample **multiple-choice** and **code-based** questions in Markdown.
 
 ## Function Calls in C
 
@@ -356,8 +348,6 @@ int main() {
 * [ ] C. Undefined
 * [ ] D. Depends on compiler
 * [ ] E. Segmentation fault
-
-Great—let’s level up with a single, richer lab that forces students to use **function headers/bodies, return types, function calls, and pass-by-value**. Everything below is in Markdown and ready to drop into your course site.
 
 ---
 
