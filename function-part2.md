@@ -727,13 +727,9 @@ Select the **best** answer.
 * [ ] C. It synchronizes variables automatically.
 * [ ] D. It prevents compilation errors.
 
-Here’s the next part —
-
 ## Refactoring & Debugging
 
-This section focuses on identifying and fixing **scope-related bugs**, **variable override issues**, and **poor use of global variables**.
-
-## Debug the Scope Error — Uninitialized Variable
+### Debug the Scope Error — Uninitialized Variable
 
 ```c
 #include <stdio.h>
@@ -753,7 +749,7 @@ int main() {
 
 **Task:** Fix the program so that it prints both numbers correctly.
 
-## Debug the Override Confusion
+### Debug the Override Confusion
 
 ```c
 #include <stdio.h>
@@ -785,7 +781,7 @@ total=100
 
 **Question:** Why is the result incorrect?
 
-## Refactor — Remove Unnecessary Global Variable
+### Refactor — Remove Unnecessary Global Variable
 
 ```c
 #include <stdio.h>
@@ -805,7 +801,7 @@ int main() {
 
 **Task:** Refactor this program so that no global variables are used.
 
-## Refactor — Use Local Scope to Simplify Code
+### Refactor — Use Local Scope to Simplify Code
 
 **Original:**
 
@@ -835,7 +831,7 @@ int main() {
 15
 ```
 
-## Challenge — Fix All Scope Issues
+### Challenge — Fix All Scope Issues
 
 ```c
 #include <stdio.h>
