@@ -395,7 +395,7 @@ Average score: 76.00
 Highest score: 95
 ```
 
-### 🧩 Starter Code
+### Starter Code
 
 ```c
 #include <stdio.h>
@@ -490,4 +490,5 @@ Output
 Scores after adding bonus: 10 20 30 40 50
 Average score: 30.00
 Highest score: 50
+
 ```
