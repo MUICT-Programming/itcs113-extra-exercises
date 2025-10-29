@@ -136,7 +136,7 @@ void swap(int x, int y) {
 int main() {
     int a = 5, b = 10;
     swap(a, b);
-    printf("a=%d b=%d\n", a, b); // Output: a=5 b=10
+    printf("a=%d b=%d\n", a, b); 
     return 0;
 }
 ```
@@ -153,8 +153,8 @@ int main() {
 #include <stdio.h>
 
 int func1(int *num1, int num2, int *num3) {
-    *num1 += 1;   // a becomes 2
-    num2 += 2;    // local copy 'num2' becomes 12
+    *num1 += 1;   
+    num2 += 2;   
     *num3 += num2 + *num1 + 1; 
     printf("In func1: %d %d %d\n", *num1, num2, *num3);
     return *num1 + num2 + *num3; 
@@ -256,8 +256,7 @@ Write a function `find_min_max` that takes two integers, `x` and `y`. It should 
 
 /* --- Function Prototype --- */
 // TODO: Write the prototype for find_min_max
-// It should accept two 'int' values and two 'int*' pointers
-// It should return 'void'
+
 void find_min_max(int x, int y, int *p_min, int *p_max);
 
 
@@ -267,7 +266,7 @@ int main() {
     int min_val, max_val;
 
     // TODO: Call find_min_max here
-    // Pass 'a', 'b', and the addresses of 'min_val' and 'max_val'
+    // 
     find_min_max(a, b, &min_val, &max_val);
 
     printf("Inputs: %d, %d\n", a, b);
@@ -282,12 +281,10 @@ int main() {
 void find_min_max(int x, int y, int *p_min, int *p_max) {
     if (x > y) {
         // TODO: Use dereferencing (*) to set the values
-        // *p_max = ...
-        // *p_min = ...
+        // 
     } else {
         // TODO: Use dereferencing (*) to set the values
-        // *p_max = ...
-        // *p_min = ...
+        // 
     }
 }
 ```
@@ -490,5 +487,4 @@ Output
 Scores after adding bonus: 10 20 30 40 50
 Average score: 30.00
 Highest score: 50
-
 ```
