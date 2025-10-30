@@ -217,7 +217,7 @@ int main() {
 
 * [ ] A. Inside test: a=11, b=22; In main: a=1, b=2
 * [ ] B. Inside test: a=21, b=12; In main: a=1, b=2
-* [ ] C. Inside test: a=21, b=12; In main: a=1, b=2
+* [ ] C. Inside test: a=12, b=21; In main: a=1, b=2
 * [ ] D. Compile error
 
 **Hints:**
