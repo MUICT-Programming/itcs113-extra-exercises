@@ -267,7 +267,7 @@ int main() {
 
     // TODO: Call find_min_max here
     // 
-    find_min_max(a, b, &min_val, &max_val);
+
 
     printf("Inputs: %d, %d\n", a, b);
     printf("Min: %d\n", min_val);
@@ -487,4 +487,5 @@ Output
 Scores after adding bonus: 10 20 30 40 50
 Average score: 30.00
 Highest score: 50
+
 ```
