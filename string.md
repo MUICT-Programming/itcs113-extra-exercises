@@ -264,9 +264,9 @@ int main() {
 
 ---
 
-# Programming Exercise - Problem Solving Question
+# Programming Exercise - Problem Solving Questions
 
-### 1. Find the Word with the Highest Order
+# 1. Find the Word with the Highest Order
 
 Given the starter code below, complete the program to solve this problem.
 
@@ -389,7 +389,7 @@ Word with the highest order is: quit
 
 ---
 
-### 2. Reverse Each Word
+# 2. Reverse Each Word
 
 Write a **C program** that reads a sentence (up to 100 characters) and prints each word **reversed**, but the **word order remains the same**.
 
@@ -456,7 +456,7 @@ MoM RefeR RotatoR WoW
 
 ---
 
-### 3. Count Vowels and Consonants
+# 3. Count Vowels and Consonants
 
 Write a **C program** that reads a sentence (up to 100 characters) and counts the number of **vowels** and **consonants** in it.
 
@@ -526,3 +526,163 @@ Consonants: 9
 ```
 
 ---
+
+# 4. Library Book Search (Function, Pointer and String)
+
+## Problem Statement
+A library stores a collection of book titles. Write a program that searches for books containing a specific keyword (**case-sensitive**). You must implement a function named `containsKeyword` that checks if the keyword exists as a substring of a book title.
+
+---
+
+## Function Definition
+You must write the following function:
+
+```c
+int containsKeyword(char *title, char *keyword);
+```
+#### Function Details:
+
+1. Use a manual substring search to check if the keyword exists within a title.
+2. Use nested loops:
+ * Outer loop: Iterate over all possible starting positions in `title`.
+ * Inner loop: Compare the characters of `keyword` with the corresponding characters in `title`.
+3. Return `1` if a match is found, or `0` if no match is found.
+
+#### Hints for Writing the Function
+
+* Use the `strlen()` function to calculate the lengths of `title` and `keyword`.
+* The outer loop should iterate through `title` from index `0` to `(length of title - length of keyword)`.
+* The inner loop compares each character of `keyword` with the corresponding characters in `title`. If a mismatch occurs, break out of the loop.
+* If all characters of `keyword` match, return `1`. Otherwise, return `0`
+
+## Requirements
+1. Read the total number of books (`n`) in the library `(1 ≤ n ≤ 10)`.
+2. Read `n` book titles, each up to 50 characters long.
+3. Read a single search keyword (up to 50 characters).
+4. Use the `containsKeyword` function to determine if each title contains the keyword.
+5. Print the matching book titles or "**No Match**" if no books contain the keyword.
+
+### Input Format
+* Line 1: An integer `n`, the number of books.
+* Next `n` lines: Each line contains a book title.
+* Last line: A single keyword to search for.
+
+*Using* `fgets()` *function reads a line of input from the user, including the newline character* (`\n`) *, if space allows. make sure to remove it*
+
+### Output Format
+* One matching book title per line (in the same order as input).
+* If no book matches, output: **No Match**.
+
+---
+## Sample Test Cases
+
+**Case 1**:
+
+Sample input:
+
+
+```text
+1
+Data Analysis with Python
+Python
+```
+
+Expected output:
+
+```text
+Data Analysis with Python
+```
+
+**Case 2**:
+
+Sample input:
+
+```text
+3
+C++ Basics
+Python - A Beginner's Guide
+Mastering Java!
+Python
+```
+
+Expected output:
+
+```text
+Python - A Beginner's Guide
+```
+
+**Case 3**:
+
+Sample input:
+
+```text
+2
+JavaScript Essentials
+Data Science with Python
+Ruby
+```
+
+Expected output:
+
+```text
+No Match
+```
+
+**Case 4**:
+
+Sample input:
+
+```text
+2
+Java Programming
+JavaScript Basics
+Java
+```
+
+Expected output:
+
+```text
+Java Programming
+JavaScript Basics
+```
+
+### Starter Code is here
+```c
+#include<stdio.h>
+#include<strings.h>
+
+// TODO 1 Declare the function prototype
+
+int main() {
+    int n;
+    scanf("%d ", &n);
+    char titles[n][51];
+    char keywords[51];
+    for (int i = 0; i < n; i++) {
+        fgets(titles[i], 51, stdin);
+        // need to trim `\n`
+        char *pos;
+        if ((pos=strchr(titles[i], '\n')) != NULL)
+        *pos = '\0';   
+        
+        
+    }
+    fgets(keywords, 100, stdin);
+    // need to trim `\n`
+    char *pos;
+    if ((pos=strchr(keywords, '\n')) != NULL)
+        *pos = '\0';
+    
+    int found = 0; 
+    // TODO 2 Call the function
+    // Search for the keyword in each book title
+   
+   
+
+
+    return 0;
+}
+
+// TODO 3: Define the function
+
+```
