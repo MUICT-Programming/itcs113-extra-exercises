@@ -536,3 +536,307 @@ Aa bb cc  ee  xx yy
 The sentence is: "Aa bb cc  ee  xx yy "
 The number of characters is 20, and the number of words is 6.
 ```
+
+### 3. Computing GPA and Student Status
+
+Given the starter code below, complete the program to solve this problem.
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LINE_LEN 150
+#define MAX_COURSE_LEN 120
+#define MAX_STATUS_LEN 10
+#define N_GRADES 8
+#define MAX_ENROLL 7
+
+char POSSIBLE_GRADES[N_GRADES][3] = {"A", "B+", "B", "C+", "C", "D+", "D", "F"};
+
+
+struct Course {
+    // TODO 1: Declare a structure for the course enrollment
+
+
+    // END 1
+};
+
+int convert_char_to_int(char c, int *out);
+int convert_str_to_grade(char str[], float *out);
+void parse_course(char line[], char *course_id, char *course_name, int *credit, float *grade);
+
+// TODO 2: Create two function prototypes for the functions:
+//         - create_course
+//         - compute_gpa
+
+
+// END 2
+
+int main() {
+    int n = 0;
+    char status[MAX_STATUS_LEN];
+    float gpa;
+    struct Course courses[MAX_ENROLL];
+    char line[MAX_LINE_LEN];
+    while (fgets(line, MAX_LINE_LEN, stdin) != NULL) {
+        if (strlen(line) <= 1) { break; }
+        courses[n] = create_course(line);
+        n++;
+    }
+
+    gpa = compute_gpa(courses, n, status);
+
+    printf("================== Enrollment ==================\n");
+    for (int i = 0; i < n; i++) {
+        struct Course c = courses[i];
+        printf(
+            "%s %s %d %.2f\n",
+            // TODO 3: Add Course ID, Course Name, Course Credit, and Course Grade
+
+
+            // END 3
+            );
+    }
+    printf("------------------------------------------------\n");
+    printf("GPA: %.2f\nSTATUS: %s\n", gpa, status);
+    printf("================================================\n");
+    return 0;
+}
+
+
+int convert_char_to_int(char c, int *out) {
+    if (c >= '0' && c <= '9') {
+        *out = c - '0';
+        return 1;
+    } else {
+        *out = -1;
+        return 0;
+    }
+}
+
+int convert_str_to_grade(char str[], float *out) {
+    float grade = 4.0;
+    for (int i = 0; i < N_GRADES; i++) {
+        if(strcmp(str, POSSIBLE_GRADES[i]) == 0) {
+            *out = grade;
+            return 1;
+        }
+        grade -= 0.5;
+        if (grade == 0.5) {
+            grade = 0.0;
+        }
+    }
+    return 0;
+}
+
+
+void parse_course(char line[], char *course_id, char *course_name, int *credit, float *grade) {
+    int state = 0, j = 0;
+    char grade_str[3];
+    for (int i = 0; (line[i] != '\0' && line[i] != '\n'); i++) {
+        if (line[i] == ',') {
+            state++;
+            j = 0;
+            continue;
+        }
+        switch (state) {
+        case 0:
+            course_id[j] = line[i];
+            course_id[j+1] = '\0';
+            break;
+        case 1:
+            course_name[j] = line[i];
+            course_name[j+1] = '\0';
+            break;
+        case 2:
+            convert_char_to_int(line[i], credit);
+            break;
+        case 3:
+            grade_str[j] = line[i];
+            grade_str[j+1] = '\0';
+            break;
+        default:
+            break;
+        }
+        j++;
+    }
+    convert_str_to_grade(grade_str, grade);
+}
+
+// TODO 4: Define the function create_course
+//         This function must call `parse_course`
+
+
+// END 4
+
+// TODO 5: Define the function compute_gpa
+
+
+// END 5
+
+
+```
+
+## Background
+
+A student takes many courses per semester. The GPA of a semester can be computed from the sum of subject credits multiply by grade point and then divided by total credits. For example, if a student enrolls and gets grades:
+
+- ITCS113,Fundamentals of Programming,3,A
+- ITLG111,Technical English I,2,B
+- ITCS111,Linear Algebra and Calculus for Computing,3,B+
+
+This student will get GPA of
+
+```plaintext
+((3 x 4.0) + (2 * 3.0) + (3 * 3.5)) / 8 = 3.56
+```
+
+\*used only two decimal places
+
+The status of a student depends on the GPA, following the rules below:
+
+- GPA >= 2.0, Status: `"NORMAL"`
+- GPA >= 1.8 and GPA < 2.0, Status: `"PRO 2"`
+- GPA >= 1.5 and GPA < 1.8, Status: `"PRO 1"`
+- GPA < 1.5, Status: `"RETIRED"`
+
+## Instruction
+
+This question has five parts. You should first read the overall code in the main.c and then start writing your code one part at a time.
+
+1. [TODO 1, 1 pt] Declare a structure name `Course`. A course consists of
+   - Course ID (e.g., `"ITCS113"`)
+   - Course Name (e.g., `"Fundamentals of Programming"`)
+   - Credit (e.g., `3`)
+   - Grade Point (e.g., `3.5` - if the letter grade is `B`)
+2. [TODO 2, 1 pt] Declare two function _prototypes_:
+
+   - `create_course` takes a string in the CSV format and return the structure course. An example of a function call is
+
+     ```c
+     struct Course c = create_course("ITCS113,Fundamental of Programming,3,B+");
+     ```
+
+   - `compute_gpa` takes an array of courses, number of courses, and status string; and return the GAP. Additionally, set the status string. An example of a function call is
+
+     ```c
+     int n = 7;
+     char status[10];
+     struct Course courses[n] = {...};  // init the courses
+
+     gpa = compute_gpa(courses, n, status);
+     ```
+
+3. [TODO 3, 1 pt] Print the course ID, course name, credit, and grade point.
+4. [TODO 4, 4 pt] Define the function `create_course` (declare in TODO 2). We will assume that the string argument always has the correct formatting. An example of a function call is
+
+   ```c
+   struct Course c = create_course("ITCS113,Fundamental of Programming,3,B+");
+   // c will contain the following information
+   // Course ID: "ITCS113"
+   // Course Name: "Fundamentals of Programming"
+   // Credit: 3
+   // Grade: 3.5
+   ```
+
+   To help you process this, we defined a helper function for you.
+
+   ```c
+   void parse_course(char line[], char *course_id, char *course_name, int *credit, float *grade);
+   ```
+
+   This function converts a string `line` into the course ID, course name, credit, and grade; and sets them into the pointers: `course_id`, `course_name`, `credit`, and `grade` respectively.
+
+   Calling this function correctly will give you 1 point.
+
+5. [TODO 5, 3 pt] Define the function `compute_gpa` (declare in TODO 2). An example of a function call is
+
+   ```c
+   int n = 3;
+   char status[10];
+   struct Course courses[] = {
+       {"ITCS113","Fundamentals of Programming",3,2.0},
+       {"ITLG111","Technical English I",2,1.5}
+   }
+
+   float gpa = compute_gpa(courses, n, status);
+   // gpa is 1.80
+   // status is "PRO 2"
+   ```
+
+## Example Cases
+
+### Case 1
+
+**Inputs (ends with an empty line):**
+
+```plaintext
+ITCS113,Fundamentals of Programming,3,A
+ITLG111,Technical English I,2,B
+ITCS111,Linear Algebra and Calculus for Computing,3,B+
+
+```
+
+**Expected outputs (ends with a new line):**
+
+```plaintext
+================== Enrollment ==================
+ITCS113 Fundamentals of Programming 3 4.00
+ITLG111 Technical English I 2 3.00
+ITCS111 Linear Algebra and Calculus for Computing 3 3.50
+------------------------------------------------
+GPA: 3.56
+STATUS: NORMAL
+================================================
+
+```
+
+### Case 2
+
+**Inputs (ends with an empty line):**
+
+```plaintext
+ITCS113,Fundamentals of Programming,3,D+
+
+```
+
+**Expected outputs (ends with a new line):**
+
+```plaintext
+================== Enrollment ==================
+ITCS113 Fundamentals of Programming 3 1.50
+------------------------------------------------
+GPA: 1.50
+STATUS: PRO 1
+================================================
+
+```
+
+### Case 3
+
+**Inputs (ends with an empty line):**
+
+```plaintext
+ITCS113,Fundamentals of Programming,3,D
+ITLG111,Technical English I,2,F
+ITCS111,Linear Algebra and Calculus for Computing,3,D+
+ITCS112,Discrete Structures,3,D+
+ITCS114,Introduction to Computer Ethics,1,C+
+
+```
+
+**Expected outputs (ends with a new line):**
+
+```plaintext
+================== Enrollment ==================
+ITCS113 Fundamentals of Programming 3 1.00
+ITLG111 Technical English I 2 0.00
+ITCS111 Linear Algebra and Calculus for Computing 3 1.50
+ITCS112 Discrete Structures 3 1.50
+ITCS114 Introduction to Computer Ethics 1 2.50
+------------------------------------------------
+GPA: 1.21
+STATUS: RETIRED
+================================================
+
+```
