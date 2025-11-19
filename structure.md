@@ -277,7 +277,7 @@ What is the output?
 ```c
 struct T { int a; int b; };
 void modify(struct T *t) {
-    t->a = t->b + 3;
+    (*t).a = (*t).b + 3;
 }
 int main() {
     struct T t = {2, 4};
@@ -287,3 +287,252 @@ int main() {
 ```
 
 (Write the exact output.)
+
+<!-- **Answer: 7 4** -->
+
+# Programming Exercise - Problem Solving Question
+
+### 1. Calculate the total price of tickets
+
+Given the starter code below, complete the program to solve this problem.
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_LENGTH 51
+
+// ===== DO NOT MODIFY =====
+struct Person {
+  char name[MAX_LENGTH];
+  int age;
+};
+// =========================
+
+struct Ticket {
+  // TODO 1: Create Ticket structure (2 lines)
+  //
+  //// END
+};
+
+// ===== DO NOT MODIFY =====
+float totalPrice(struct Ticket tickets[], int size) {
+  float total = 0.0;
+  for (int i = 0; i < size; i++) {
+    total += tickets[i].price;
+  }
+  return total;
+}
+// =========================
+
+int main() {
+
+  // ===== DO NOT MODIFY =====
+  int N;
+  float full_price;
+  float total_price;
+  scanf("%d", &N);
+  scanf("%f", &full_price);
+  struct Ticket tickets[N]; // Array of tickets
+  // =========================
+
+  // TODO 2: Scan to take inputs and assign to each ticket in an array
+  //
+  //
+  //
+  //
+  //// END
+
+  // TODO 3: call the `totalPrice` function to update the total_price variable
+  // (1 line)
+  //
+  //// END
+
+  // ===== DO NOT MODIFY =====
+  for (int i = 0; i < N; i++) {
+    printf("[%d] name=%s, age=%d, price=%.2f\n", i, tickets[i].owner.name, tickets[i].owner.age, tickets[i].price);
+  }
+  printf("Total Price: %.2f", total_price);
+  // =========================
+}
+```
+
+Write a program to calculate the total price when a user wants to purchase tickets. There will be a discount on the full ticket price depending on each ticket owner's age. Please complete the `TODO` tasks in the starter code file.
+
+**TODO 1:** Define a structure `Ticket` with fields `owner` and `price`.
+
+`owner`: a structure of type `"Person"`
+
+`price`: a float value
+
+**TODO 2:** The program should prompt the user to input the number of tickets and the full price, then scan inputs for each ticket owner's `name` and `age`. The ticket's name cannot contain any space (" "). Based on the age, the program should calculate the ticket price. If the `age` is equal to or over 60, the ticket will be half-price (50% off).
+
+**TODO 3:** The program should print the ticket details and the total price of all tickets. To find the total price, you have to call the `totalPrice` function which is already provided.
+
+## Sample Test Cases
+
+### **Case 1**
+
+**Input:**
+
+```
+2 15.0
+Harry 28
+Dumbledore 89
+```
+
+**Output:**
+
+```
+[0] name=Harry, age=28, price=15.00
+[1] name=Dumbledore, age=89, price=7.50
+Total Price: 22.50
+```
+
+### **Case 2**
+
+**Input:**
+
+```
+3 20.0
+Mickey 62
+Minnie 59
+Duffy 12
+```
+
+**Output:**
+
+```
+[0] name=Mickey, age=62, price=10.00
+[1] name=Minnie, age=59, price=20.00
+[2] name=Duffy, age=12, price=20.00
+Total Price: 50.00
+```
+
+### **Case 3**
+
+**Input:**
+
+```
+4 315.0
+Doraemon 201
+Nobita 61
+Shizuka 60
+Nobisuke 42
+```
+
+**Output:**
+
+```
+[0] name=Doraemon, age=201, price=157.50
+[1] name=Nobita, age=61, price=157.50
+[2] name=Shizuka, age=60, price=157.50
+[3] name=Nobisuke, age=42, price=315.00
+Total Price: 787.50
+```
+
+### 2. Calculate the total price of tickets
+
+Given the starter code below, complete the program to solve this problem.
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_CHAR 420
+
+struct sent_info {
+    // TODO 1: Add members of the struct (2 lines)
+
+
+    //
+};
+
+struct sent_info read_sentence(char * out_str) {
+    // TODO 2: Add your code here (as many lines as you need)
+
+
+
+}
+
+int main() {
+    //
+    // ===== DO NOT MODIFY =====
+    char str[MAX_CHAR];
+    struct sent_info info;
+    // =========================
+    //
+    // TODO 3: Add a call to the read_sentence function (1 lines)
+
+    //
+    //===== DO NO MODIFY =====
+    printf("The sentence is: \"%s\"\n", str);
+    printf("The number of characters is %d, and the number of words is %d.\n", info.num_chars, info.num_words);
+    return 0;
+    // =========================
+
+}
+
+```
+
+Create a function `read_sentence` that has one parameter for an input sentence. The function reads an input sentence from the command line into the input parameter and returns the following data via a struct:
+
+`num_chars`: Number of characters (not including `'\0'` or `'\n'`)
+
+`num_words`: Number of words (only spaces separate words)
+The function prototype of the `read_sentence` is as follows:
+
+```
+struct sent_info read_sentence(char * out_str);
+```
+
+Please be careful about the following:
+
+- `'\0'` or `'\n'` end the sentence.
+- Two words can be separated by more than one space. See the example below.
+- Spaces might start or end the sentence.
+
+### **Example 1**
+
+**Input (there is a space before and after):**
+
+```
+ xy
+```
+
+**Output:**
+
+```
+The sentence is: " xy "
+The number of characters is 4, and the number of words is 1.
+```
+
+### **Example 2**
+
+**Input:**
+
+```
+the answer is 42.
+```
+
+**Output:**
+
+```
+The sentence is: "the answer is 42."
+The number of characters is 17, and the number of words is 4.
+```
+
+### **Example 3**
+
+**Input (there is a space after and two spaces between cc, ee, and xx):**
+
+```
+Aa bb cc  ee  xx yy
+```
+
+**Output:**
+
+```
+The sentence is: "Aa bb cc  ee  xx yy "
+The number of characters is 20, and the number of words is 6.
+```
