@@ -431,7 +431,7 @@ Nobisuke 42
 Total Price: 787.50
 ```
 
-### 2. Calculate the total price of tickets
+### 2. Count Characters and Words
 
 Given the starter code below, complete the program to solve this problem.
 
@@ -840,3 +840,4 @@ STATUS: RETIRED
 ================================================
 
 ```
+
